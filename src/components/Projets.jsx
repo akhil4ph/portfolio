@@ -15,7 +15,7 @@ const projects = [
         company: "AI Virtual Try-On",
         description: "Built a brand-specific e-commerce website integrating a 'Try with AI' functionality, allowing users to upload images for a virtual clothing try-on experience.",
         tech: ["React.js", "Tailwind CSS", "JavaScript"],
-        liveLink: "#", // Add link when deployed
+        liveLink: "#", 
         github: "https://github.com/akhil4ph"
     },
     {
@@ -31,7 +31,7 @@ const projects = [
         company: "3D Viewing Experience",
         description: "Built a fully responsive e-commerce platform for furniture utilizing 3D images for an enhanced product viewing experience.",
         tech: ["React.js", "Tailwind CSS", "JavaScript"],
-        liveLink: "#", // Add link when deployed
+        liveLink: "#",
         github: "https://github.com/akhil4ph"
     },
     {
@@ -54,7 +54,7 @@ const projects = [
 
 const ProjectsSection = () => {
     return (
-        <section id="projects" className="relative w-full min-h-screen bg-[#0a0d14] py-24 px-4 md:px-12 lg:px-20 overflow-hidden">
+        <section id="projects" className="relative w-full min-h-screen bg-[#0a0d14] py-5 px-4 md:px-12 lg:px-20 overflow-hidden">
             
             {/* Header Section */}
             <div className="text-center mb-16 relative z-10">

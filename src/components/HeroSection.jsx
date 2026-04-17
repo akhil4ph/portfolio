@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import akhil from "../assets/akhil.webp";
 
 const HeroSection = () => {
-    // ---------------- 1. TYPING ANIMATION LOGIC ----------------
+// TYPING ANIMATION LOGIC 
     const roles = ["Frontend Developer", "Web Developer", "UI/UX Enthusiast"];
     const [roleIndex, setRoleIndex] = useState(0);
     const [typedText, setTypedText] = useState("");
@@ -15,7 +15,7 @@ const HeroSection = () => {
 
         const timeout = setTimeout(() => {
             if (!isDeleting && typedText === currentRole) {
-                setTimeout(() => setIsDeleting(true), 1500); // Pause full text
+                setTimeout(() => setIsDeleting(true), 1500); 
             } else if (isDeleting && typedText === "") {
                 setIsDeleting(false);
                 setRoleIndex((prev) => (prev + 1) % roles.length);
@@ -31,15 +31,13 @@ const HeroSection = () => {
         return () => clearTimeout(timeout);
     }, [typedText, isDeleting, roleIndex]);
 
-    // ---------------- 2. MOUSE PARALLAX LOGIC ----------------
+    // MOUSE PARALLAX LOGIC 
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
     // Smooth spring physics for parallax
     const mouseXSpring = useSpring(x, { stiffness: 50, damping: 20 });
     const mouseYSpring = useSpring(y, { stiffness: 50, damping: 20 });
-
-    // Move distances for different layers (Creates 3D depth)
     const moveX = useTransform(mouseXSpring, [-1, 1], [-25, 25]);
     const moveY = useTransform(mouseYSpring, [-1, 1], [-25, 25]);
     const moveXOpposite = useTransform(mouseXSpring, [-1, 1], [25, -25]);
@@ -53,7 +51,7 @@ const HeroSection = () => {
         y.set(mouseY);
     };
 
-    // ---------------- 3. STARFIELD PARTICLES LOGIC ----------------
+    // STARFIELD PARTICLES LOGIC 
     const particles = useMemo(() => Array.from({ length: 40 }).map(() => ({
         x: Math.random() * 100,
         y: Math.random() * 100,
@@ -68,7 +66,7 @@ const HeroSection = () => {
             className="relative w-full min-h-screen flex flex-col-reverse md:flex-row items-center justify-center md:justify-between px-4 md:px-12 lg:px-20 pt-24 pb-16 bg-[#0a0d14] overflow-hidden"
         >
 
-            {/* 🌟 STARFIELD PARTICLES LAYER */}
+            {/*  STARFIELD PARTICLES LAYER */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 {particles.map((p, i) => (
                     <motion.div
@@ -81,7 +79,7 @@ const HeroSection = () => {
                 ))}
             </div>
 
-            {/* 🖱️ PARALLAX BACKGROUND CODE SNIPPETS */}
+            {/*  PARALLAX BACKGROUND CODE SNIPPETS */}
             <motion.div
                 style={{ x: moveX, y: moveY }}
                 className="absolute right-0 md:-right-10 top-1/4 text-[#1e2330] font-mono text-xs md:text-lg select-none z-0 opacity-30 hidden md:block pointer-events-none"
@@ -93,7 +91,7 @@ const HeroSection = () => {
                 <p className="mb-6 ml-10">{'/* Mobile First */'}</p>
             </motion.div>
 
-            {/* ---------------- LEFT CONTENT (Text & Buttons) ---------------- */}
+            {/* LEFT CONTENT (Text & Buttons) */}
             <motion.div
                 style={{ x: moveXOpposite, y: moveYOpposite }}
                 className="relative z-10 w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left"
@@ -112,7 +110,7 @@ const HeroSection = () => {
                     </span>
                 </motion.h1>
 
-                {/* Subtitle with 🔥 TYPING ANIMATION */}
+                {/* Subtitle with TYPING ANIMATION */}
                 <motion.p
                     initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-base md:text-lg text-slate-300 mb-8 max-w-md mx-auto md:mx-0 font-light leading-relaxed min-h-[60px]"
@@ -162,7 +160,7 @@ const HeroSection = () => {
 
             </motion.div>
 
-            {/* ---------------- RIGHT CONTENT (IMAGE with Parallax) ---------------- */}
+            {/*RIGHT CONTENT (IMAGE with Parallax)  */}
             <motion.div
                 style={{ x: moveXOpposite, y: moveYOpposite }}
                 className="relative z-10 w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left"
@@ -185,7 +183,7 @@ const HeroSection = () => {
                 </motion.div>
             </motion.div>
 
-            {/* 🎯 SCROLL INDICATOR ARROW */}
+            {/*  SCROLL INDICATOR ARROW */}
             <motion.div
                 className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center justify-center text-slate-500 hidden md:flex"
                 animate={{ y: [0, 10, 0] }}
